@@ -1,0 +1,123 @@
+<mat-sidenav-container class="navbar-container">
+    <mat-sidenav mode="side" opened #sidenav>
+        <nav class="sidenav-wrapper">
+            <div [routerLink]="['/app/cliente']" class="text-center logo-sidenav pt-2 logo-c-g logo-c-m">
+                <img src="assets/img/logo.png" width="" alt="" loading="lazy">
+            </div>
+            <div [routerLink]="['/app/cliente']" class="text-center logo-sidenav pt-2 logo-r-g logo-r-m">
+                <img src="assets/img/logo.png" width="" alt="" loading="lazy">
+            </div>
+            <nav class="sidenav-grid">
+                <ul>
+                    <li class="sidenav-item py-2" [routerLink]="['./productos']" routerLinkActive="sidenav-item-active">
+                        <a>
+                            <div class="sidenav-item-content-wrapper">
+                                <mat-icon>multiple_stop</mat-icon>
+                            </div>
+                            <span class="sidenav-item-text">Productos</span>
+                        </a>
+                    </li>
+                    <li class="sidenav-item py-2" [routerLink]="['./asesores']" routerLinkActive="sidenav-item-active">
+                        <a>
+                            <div class="sidenav-item-content-wrapper">
+                                <mat-icon>multiple_stop</mat-icon>
+                            </div>
+                            <span class="sidenav-item-text">Asesores</span>
+                        </a>
+                    </li>
+                    <li class="sidenav-item py-2" [routerLink]="['./reporte-venta']" routerLinkActive="sidenav-item-active">
+                        <a>
+                            <div class="sidenav-item-content-wrapper">
+                                <mat-icon>multiple_stop</mat-icon>
+                            </div>
+                            <span class="sidenav-item-text">Reporte Ventas</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </nav>
+        </nav>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <!-- #region TOOLBAR -->
+        <mat-toolbar class="toolbar-cliente">
+            <!--  <a class="d-none d-md-inline" [routerLink]="['/app/cliente']">
+                <img [routerLink]="['/app/cliente']" src="assets/img/logo.png" width="160" alt="" loading="lazy">
+            </a> -->
+
+            <span class="titulo-cabecera">{{titulo$ | async}}</span>
+            <!-- <span>{{_tituloActual}}</span> -->
+            <span class="navbar-spacer"></span>
+
+            <span class="medium pl-4 pr-1 pr-2 pointer alias" [matMenuTriggerFor]="menuUsuario">
+                    {{usuarioActuAl.nombre}}
+            </span>
+            <mat-icon class="toolbar-icon pr-4" aria-hidden="false" [matMenuTriggerFor]="menuUsuario" aria-label="Example heart icon">
+                account_circle
+            </mat-icon>
+
+            <mat-menu #menuUsuario="matMenu" class="menu-usuario">
+
+                <button mat-menu-item class="" (click)="logOut()">
+                    <mat-icon>logout</mat-icon>
+                    <span>Cerrar sesion</span>
+                </button>
+            </mat-menu>
+        </mat-toolbar>
+        <!-- #endregion TOOLBAR -->
+
+        <!-- #region TITULO -->
+        <div class="titulo-cabecera-condicional">
+            <span class="large">{{titulo$ | async}}</span>
+        </div>
+        <!-- #endregion TITULO -->
+
+        <!-- #region CONTENIDO -->
+        <div class="container-fluid">
+            <router-outlet></router-outlet>
+        </div>
+        <!-- #endregion CONTENIDO -->
+    </mat-sidenav-content>
+
+</mat-sidenav-container>
+<!-- #endregion SIDEBAR -->
+
+<!-- #region MENU INFERIOR -->
+<div class="nav-bottom-wrapper">
+    <nav class="nav-grid">
+        <ul>
+            <li class="menu-inferior-item" [routerLink]="['./productos']" routerLinkActive="menu-inferior-item-active">
+                <a>
+                    <div class="p-2">
+                        <mat-icon routerLinkActive="icon-active">multiple_stop</mat-icon>
+                        <p class="small" routerLinkActive="icon-active">Productos</p>
+                    </div>
+                </a>
+            </li>
+            <li class="menu-inferior-item" [routerLink]="['./asesores']" routerLinkActive="menu-inferior-item-active">
+                <a>
+                    <div class="p-2">
+                        <mat-icon routerLinkActive="icon-active">multiple_stop</mat-icon>
+                        <p class="small" routerLinkActive="icon-active">Asesores</p>
+                    </div>
+                </a>
+            </li>
+            <li class="menu-inferior-item" [routerLink]="['./reporte-venta']" routerLinkActive="menu-inferior-item-active">
+                <a>
+                    <div class="p-2">
+                        <mat-icon routerLinkActive="icon-active">multiple_stop</mat-icon>
+                        <p class="small" routerLinkActive="icon-active">Reporte Ventas</p>
+                    </div>
+                </a>
+            </li>
+            <li class="menu-inferior-item">
+
+            </li>
+
+            <li class="menu-inferior-item">
+
+            </li>
+        </ul>
+    </nav>
+</div>
